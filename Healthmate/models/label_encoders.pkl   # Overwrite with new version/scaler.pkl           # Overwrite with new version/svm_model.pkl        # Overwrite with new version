@@ -1,0 +1,27 @@
+import joblib
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.svm import SVC
+import xgboost as xgb
+
+# Create and fit new models
+label_encoder = LabelEncoder()
+scaler = StandardScaler()
+svm_model = SVC()
+
+# Assuming you have your training data ready
+# X_train, y_train = ...
+
+# Fit the models
+# label_encoder.fit(y_train)
+# scaler.fit(X_train)
+# svm_model.fit(X_train, y_train)
+
+# Save the models
+joblib.dump(label_encoder, 'models/label_encoders.pkl')
+joblib.dump(scaler, 'models/scaler.pkl')
+joblib.dump(svm_model, 'models/svm_model.pkl')
+
+# For XGBoost model
+xgboost_model = xgb.XGBClassifier()
+# xgboost_model.fit(X_train, y_train)
+xgboost_model.save_model('models/xgboost_model.pkl')
